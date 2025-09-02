@@ -1,0 +1,234 @@
+ <!-- Header (unchanged) -->
+    <div class="page-header bg-white page-header-dark text-white">
+        <div class="page-header-content container-boxed d-lg-flex">
+            <img src="Nea-web-Logo.png" class="img-fluid" style="width:100%;" />
+        </div>
+    </div>
+<div class="navbar bg-secondary navbar-dark sticky-top navbar-expand-xl pt-1 pb-1">
+        <div class="container-fluid container-boxed position-relative">
+            <div class="flex-fill overflow-auto overflow-lg-visible scrollbar-hidden">
+                <ul class="nav gap-1 flex-nowrap flex-lg-wrap">
+                    <li class="nav-item"><a class="navbar-nav-link rounded active" href="#!"><i class="ph-house me-2"></i>Home</a></li>
+                    <li class="nav-item"><a class="navbar-nav-link rounded" href="#!"><i class="ph-chat-text me-2"></i>Compliant</a></li>
+                    <li class="nav-item ms-lg-auto"><a href="#!" class="navbar-nav-link rounded"><i class="ph-device-mobile me-2"></i>SMS</a></li>
+                    <li class="nav-item nav-item-dropdown-lg dropdown"><a href="#!" class="navbar-nav-link dropdown-toggle rounded" data-bs-toggle="dropdown"><i class="ph-telegram-logo me-2"></i>Telegram</a><div class="dropdown-menu dropdown-menu-end"><a href="#!" class="dropdown-item" target="_blank">Go to the Bot</a><a href="#!" class="dropdown-item">How to Use it</a></div></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<script src="https://unpkg.com/phosphor-icons"></script>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css"
+/>
+
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Results</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            padding: 1px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .student-card {
+            
+            background: white;
+            border-radius: 3px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .headers {
+            background: #247297 ;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        max-width: 99.5%;
+        }
+
+        .scores-table {
+                      padding: 15px;
+
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border: 2px solid #247297;
+            /* frame color (green example) */
+            border-radius: 5px;
+          overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            /* shadow */
+        }
+
+        .scores-table th,
+        .scores-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .scores-table th {
+            background: #f5f5f5;
+            font-weight: bold;
+        }
+
+        .scores-table th,
+        .scores-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #247297;
+        }
+
+        .scores-table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+
+        .total-row {
+            font-weight: bold;
+            background-color: #e9ecef;
+            background: #006994;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .info-section {
+            padding: 15px;
+            background: #f8f9fa;
+            margin-top: 10px;
+        }
+
+        .info-item {
+            margin-bottom: 10px;
+            display: flex;
+        }
+
+        .info-label {
+            font-weight: bold;
+            min-width: 120px;
+        }
+
+        @media (max-width: 480px) {
+
+            .scores-table th,
+            .scores-table td {
+                padding: 10px 8px;
+                font-size: 14px;
+            }
+
+            .info-item {
+                flex-direction: column;
+                margin-bottom: 15px;
+            }
+
+            .info-label {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- First Student Card -->
+    <div class="student-card">
+        <div class="scores" style="background-color: #fff; padding: 10px; ">
+            <div class="img">
+                <img src="yab.jpg" width="357px" height="350px" style="border-radius: 5px;" alt="">
+            </div>
+            <table class="scores-table">
+                <tr>
+                    <td><p style="color: #333333bf; font-size: 13px; font-weight: 900;">Chemistry</p></td>
+                    <td style="color: #006994;"><b>44</b></td>
+                </tr>
+                <tr>
+                    <td><p style="color: #333333bf; font-size: 13px; font-weight: 900;">English</p></td>
+                    <td style="color: #006994;"><b>42</b></td>
+                </tr>
+                <tr>
+                    <td><p style="color: #333333bf; font-size: 13px; font-weight: 900;">Mathematics</p></td>
+                    <td style="color: #006994;"><b>40</b></td>
+                </tr>
+                <tr>
+                    <td><p style="color: #333333bf; font-size: 13px; font-weight: 900;">Physics</p></td>
+                    <td style="color: #006994;"><b>52</b></td>
+                </tr>
+                <tr>
+                    <td><p style="color: #333333bf; font-size: 13px; font-weight: 900;">Biology</p></td>
+                    <td style="color: #006994;"><b>45</b></td>
+                </tr>
+                <tr>
+                    <td><p style="color: #333333bf; font-size: 13px; font-weight: 900;">Scholastic Aptitude Test</p></td>
+                    <td style="color: #006994;"><b>54</b></td>
+                </tr>
+                <tr class="total-row">
+                    <td>Total Score</td>
+                    <td>277</td>
+                </tr>
+            </table>
+            .
+        </div>
+    <div class="student-card">
+        <div class="headers" style="">ESSLCE Registration Information</div>
+            <table class="scores-table">
+                <tr>
+                    <td>FULLNAME:</td>
+                    <td>Yeabsira Samuel WoldeGarima</td>
+                </tr>
+                <tr>
+                    <td>ADMISSION NO:</td>
+                    <td>4351826</td>
+                </tr>
+                <tr>
+                    <td>SEX:</td>
+                    <td>M</td>
+                </tr>
+                <tr>
+                    <td>SIGHT:</td>
+                    <td>M</td>
+                </tr>
+                <tr>
+                    <td>AGE:</td>
+                    <td>18</td>
+                </tr>
+                <tr>
+                    <td>STREAM:</td>
+                    <td>Natural Sc.</td>
+                </tr>
+                <tr>
+                    <td>SCHOOL:</td>
+                    <td>GELAN</td>
+                </tr>
+                <tr>
+                    <td>SCHOOLCODE:</td>
+                    <td>14020107</td>
+                </tr>
+                <tr>
+                    <td>REMARK:</td>
+                    <td>PPBT</td>
+                </tr>
+               
+            </table>
+            .
+        </div>
+
+    </div>
+</body>
+
+</html>
