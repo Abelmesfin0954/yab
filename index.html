@@ -1,235 +1,667 @@
- <!-- Header (unchanged) -->
-    <div class="page-header bg-white page-header-dark text-white">
-        <div class="page-header-content container-boxed d-lg-flex">
-            <img src="Nea-web-Logo.png" class="img-fluid" style="width:100%;" />
-        </div>
-    </div>
-<div class="navbar bg-secondary navbar-dark sticky-top navbar-expand-xl pt-1 pb-1">
-        <div class="container-fluid container-boxed position-relative">
-            <div class="flex-fill overflow-auto overflow-lg-visible scrollbar-hidden">
-                <ul class="nav gap-1 flex-nowrap flex-lg-wrap">
-                    <li class="nav-item"><a class="navbar-nav-link rounded active" href="#!"><i class="ph-house me-2"></i>Home</a></li>
-                    <li class="nav-item"><a class="navbar-nav-link rounded" href="#!"><i class="ph-chat-text me-2"></i>Compliant</a></li>
-                    <li class="nav-item ms-lg-auto"><a href="#!" class="navbar-nav-link rounded"><i class="ph-device-mobile me-2"></i>SMS</a></li>
-                    <li class="nav-item nav-item-dropdown-lg dropdown"><a href="#!" class="navbar-nav-link dropdown-toggle rounded" data-bs-toggle="dropdown"><i class="ph-telegram-logo me-2"></i>Telegram</a><div class="dropdown-menu dropdown-menu-end"><a href="#!" class="dropdown-item" target="_blank">Go to the Bot</a><a href="#!" class="dropdown-item">How to Use it</a></div></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-<script src="https://unpkg.com/phosphor-icons"></script>
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css"
-/>
-
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="style.css">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Results</title>
+    <title>EAES Result Checker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            padding: 1px;
-            background-color: #f5f5f5;
-            color: #333;
+            background: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        .student-card {
-            
+
+        /* Main Content */
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 500px;
             background: white;
-            border-radius: 3px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             overflow: hidden;
+            margin-bottom: 20px;
         }
 
-        .headers {
-            background: #247297 ;
+        .header {
+            background: #1a56db;
             color: white;
             padding: 20px;
             text-align: center;
-        max-width: 99.5%;
         }
 
-        .scores-table {
-                      padding: 15px;
-
-            width: 100%;
-            border-collapse: collapse;
-            background: #fff;
-            border: 2px solid #247297;
-            /* frame color (green example) */
-            border-radius: 5px;
-          overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            /* shadow */
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
         }
 
-        .scores-table th,
-        .scores-table td {
-            padding: 12px 16px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
         }
 
-        .scores-table th {
-            background: #f5f5f5;
-            font-weight: bold;
+        .student-info {
+            padding: 20px;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
         }
 
-        .scores-table th,
-        .scores-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #247297;
-        }
-
-        .scores-table th {
-            background-color: #f8f9fa;
-            font-weight: bold;
-        }
-
-        .total-row {
-            font-weight: bold;
-            background-color: #e9ecef;
-            background: #006994;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            font-size: 18px;
-        }
-
-        .info-section {
-            padding: 15px;
-            background: #f8f9fa;
-            margin-top: 10px;
-        }
-
-        .info-item {
-            margin-bottom: 10px;
+        .info-row {
             display: flex;
+            margin-bottom: 12px;
         }
 
         .info-label {
-            font-weight: bold;
-            min-width: 120px;
+            font-weight: 600;
+            color: #4a5568;
+            width: 120px;
+            flex-shrink: 0;
         }
 
-        @media (max-width: 480px) {
+        .info-value {
+            color: #2d3748;
+        }
 
-            .scores-table th,
-            .scores-table td {
-                padding: 10px 8px;
-                font-size: 14px;
+        .total-score {
+            text-align: center;
+            padding: 25px 20px;
+            background: linear-gradient(135deg, #1a56db 0%, #3b82f6 100%);
+            color: white;
+        }
+
+        .total-score h2 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .score-value {
+            font-size: 42px;
+            font-weight: 700;
+        }
+
+        .results-table {
+            width: 100%;
+            padding: 20px;
+            border-collapse: collapse;
+        }
+
+        .results-table tr {
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .results-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .results-table td {
+            padding: 15px 10px;
+            font-size: 16px;
+        }
+
+        .subject {
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .score {
+            text-align: right;
+            font-weight: 700;
+            color: #1a56db;
+        }
+
+        .actions {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 15px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-check {
+            background: #e5e7eb;
+            color: #4b5563;
+        }
+
+        .btn-check:hover {
+            background: #d1d5db;
+        }
+
+        .btn-print {
+            background: #1a56db;
+            color: white;
+        }
+
+        .btn-print:hover {
+            background: #1e40af;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+            color: #6b7280;
+            border-top: 1px solid #e5e7eb;
+            background: white;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .logo-large {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a56db;
+            margin-bottom: 5px;
+        }
+
+        .service-name {
+            font-size: 16px;
+            color: #4b5563;
+            font-weight: 500;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            display: none;
+            flex-direction: column;
+            z-index: 99;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            padding: 15px 20px;
+            text-decoration: none;
+            color: #4b5563;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mobile-menu a:hover {
+            background: #f1f5f9;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 400px) {
+
+
+            .header h1 {
+                font-size: 20px;
             }
 
-            .info-item {
+            .info-row {
                 flex-direction: column;
                 margin-bottom: 15px;
             }
 
             .info-label {
                 margin-bottom: 5px;
+                width: 100%;
             }
+
+            .score-value {
+                font-size: 36px;
+            }
+
+            .results-table td {
+                padding: 12px 8px;
+                font-size: 15px;
+            }
+
+            .navbar {
+                padding: 20px 15px;
+            }
+
+            .logo-text {
+                font-size: 18px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .nav-links a {
+                display: block;
+            }
+
+            .menu-toggle {
+                display: none;
+            }
+
+            .actions {
+                flex-direction: row;
+            }
+        }
+
+
+
+        /* Navbar */
+        .navbar {
+            background: #fff;
+            padding: 12px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Logo */
+        .logo h1 {
+            padding: -50px;
+            margin: 0;
+            font-size: 22px;
+            font-weight: bold;
+            color: #222;
+        }
+
+        .logo p {
+            margin: 0;
+            font-size: 12px;
+            color: #555;
+        }
+
+        /* Hamburger */
+        .menu-toggle {
+            font-size: 22px;
+            background: none;
+            border: none;
+            color: #222;
+            cursor: pointer;
         }
     </style>
 </head>
 
 <body>
-    <!-- First Student Card -->
-    <div class="student-card">
-        <div class="scores" style="background-color: #fff; padding: 10px; ">
-            <div class="img">
-                <img src="yab.jpg" width="357px" height="350px" style="border-radius: 5px;" alt="">
-            </div>
-            <table class="scores-table">
-                <tr>
-                    <td><p style="color: #333333bf; font-size: 13px; font-weight: 900;">Chemistry</p></td>
-                    <td style="color: #006994;"><b>44</b></td>
-                </tr>
-                <tr>
-                    <td><p style="color: #333333bf; font-size: 13px; font-weight: 900;">English</p></td>
-                    <td style="color: #006994;"><b>52</b></td>
-                </tr>
-                <tr>
-                    <td><p style="color: #333333bf; font-size: 13px; font-weight: 900;">Mathematics</p></td>
-                    <td style="color: #006994;"><b>40</b></td>
-                </tr>
-                <tr>
-                    <td><p style="color: #333333bf; font-size: 13px; font-weight: 900;">Physics</p></td>
-                    <td style="color: #006994;"><b>42</b></td>
-                </tr>
-                <tr>
-                    <td><p style="color: #333333bf; font-size: 13px; font-weight: 900;">Biology</p></td>
-                    <td style="color: #006994;"><b>45</b></td>
-                </tr>
-                <tr>
-                    <td><p style="color: #333333bf; font-size: 13px; font-weight: 900;">Scholastic Aptitude Test</p></td>
-                    <td style="color: #006994;"><b>54</b></td>
-                </tr>
-                <tr class="total-row">
-                    <td>Total Score</td>
-                    <td>277</td>
-                </tr>
-            </table>
-            .
-        </div>
-    <div class="student-card">
-        <div class="headers" style="">ESSLCE Registration Information</div>
-            <table class="scores-table">
-                <tr>
-                    <td>FULLNAME:</td>
-                    <td>Yeabsira Samuel Woldegarima</td>
-                </tr>
-                <tr>
-                    <td>ADMISSION NO:</td>
-                    <td>4351826</td>
-                </tr>
-                <tr>
-                    <td>SEX:</td>
-                    <td>M</td>
-                </tr>
-                <tr>
-                    <td>SIGHT:</td>
-                    <td>M</td>
-                </tr>
-                <tr>
-                    <td>AGE:</td>
-                    <td>19</td>
-                </tr>
-                <tr>
-                    <td>STREAM:</td>
-                    <td>Natural Sc.</td>
-                </tr>
-                <tr>
-                    <td>SCHOOL:</td>
-                    <td>GELAN</td>
-                </tr>
-                <tr>
-                    <td>SCHOOLCODE:</td>
-                    <td>14020107</td>
-                </tr>
-                <tr>
-                    <td>REMARK:</td>
-                    <td>PPBT</td>
-                </tr>
-               
-            </table>
-            .
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+
+            <p style="font-size: 22px;
+  font-weight: bold;
+  color: #222;">EAES</p>
+            <p>Educational Assessment and Examinations Service</p>
         </div>
 
+
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+
     </div>
+
+    <div class="container">
+
+
+        <!doctype html>
+        <html lang="en">
+
+        <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width,initial-scale=1" />
+            <title>Mock EAES Result — Yeabsira Samuel W/Grima</title>
+            <style>
+                .card {
+                    width: 300px;
+                    background: #0f1724;
+                    color: #e6eef9;
+                    border-radius: 18px;
+                    padding: 22px;
+                    box-shadow: 0 18px 30px rgba(12, 20, 40, 0.25);
+                    position: relative
+                }
+
+                .watermark {
+                    position: absolute;
+                    inset: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 36px;
+                    color: rgba(255, 255, 255, 0.06);
+                    transform: rotate(-20deg);
+                    pointer-events: none
+                }
+
+                .avatar {
+                    width: 110px;
+                    height: 110px;
+                    border-radius: 999px;
+                    overflow: hidden;
+                    border: 4px solid #7dd3fc;
+                    margin: 0 auto;
+                    background: #ddd
+                }
+
+                .avatar img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover
+                }
+
+                h1 {
+                    font-size: 20px;
+                    text-align: center;
+                    margin: 12px 0 2px;
+                    letter-spacing: 0.6px
+                }
+
+                .sub {
+                    font-size: 13px;
+                    text-align: center;
+                    color: #bcd3ea;
+                    margin-bottom: 12px
+                }
+
+                .meta {
+                    display: grid;
+                    grid-template-columns: 1fr auto;
+                    gap: 8px;
+                    color: #9fb7d6;
+                    font-size: 13px;
+                    padding: 10px 6px
+                }
+
+                .scorebox {
+                    background: linear-gradient(90deg, #4f46e5, #06b6d4);
+                    color: white;
+                    border-radius: 12px;
+                    padding: 18px;
+                    text-align: center;
+                    margin-top: 12px
+                }
+
+                .scorebox .num {
+                    font-size: 36px;
+                    font-weight: 700
+                }
+
+                .section {
+                    background: #fff;
+                    color: #0b1220;
+                    border-radius: 12px;
+                    padding: 12px;
+                    margin-top: 18px
+                }
+
+                .subject {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 8px 6px;
+                    border-bottom: 1px solid #eef4fb
+                }
+
+                .subject:last-child {
+                    border-bottom: none
+                }
+
+                .note {
+                    font-size: 12px;
+                    color: #6b7280;
+                    margin-top: 10px
+                }
+
+                .small {
+                    font-size: 12px;
+                    color: #9fb7d6
+                }
+
+
+                .meta {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    /* 2 columns layout */
+                    gap: 12px 20px;
+                    /* vertical and horizontal gap */
+                    color: #9fb7d6;
+                    font-size: 13px;
+                    padding: 10px 6px;
+
+                }
+
+
+                .border {
+                    font-size: 13px;
+                    text-align: center;
+                    color: #bcd3ea;
+                    margin-bottom: 12px;
+                    border-bottom: 1px solid #7dd3fc;
+                    /* adds underline */
+                    padding-bottom: 4px;
+                    /* space between text and line */
+                    width: fit-content;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            </style>
+
+
+<div class="result-card">
+            <div class="card">
+                <div class="avatar" title="Replace photo.jpg with your photo in the same folder">
+                    <!-- Replace 'photo.jpg' with the uploaded image file name -->
+                    <img src="yab.jpg"
+                        alt="Photo" />
+                </div>
+                <h1>YEABSIRA SAMUEL W/GRIMA</h1>
+                <div class="sub">GELAN</div><br />
+                <div style="  border-bottom: 0.2px solid #7dd3fc; /* adds underline */" class="sub"></div>
+                <div class="meta">
+                    <div class="small">
+                        Admission No:<br><strong></strong>
+                    </div>
+                    <div class="small">
+                        6908681<br><strong></strong <div class="small">
+                        <strong></strong>
+                    </div>
+                    <div class="small">
+                        Stream :<br><strong></strong>
+                    </div>
+                    <div class="small">
+                        Natural Sc. <br><strong></strong <div class="small">
+                        <strong></strong>
+                    </div>
+                    <div class="small">
+                        Age <br><strong></strong>
+                    </div>
+                    <div class="small">
+                        19 <br><strong></strong <div class="small">
+                        <strong></strong>
+                    </div>
+                    <div class="small">
+                        Sex:<br><strong></strong>
+                    </div>
+                    <div class="small">
+                        M<br><strong></strong>
+                    </div>
+                </div>
+
+                <div class="scorebox">
+                    <div class="small">TOTAL SCORE</div>
+                    <div class="num">277.52</div>
+                </div>
+
+            </div>
+
+            <br>
+                <h2><b>ESSLCE Result</b></h2>
+
+                <div class="subject">
+                    <span>Chemistry</span>
+                    <span class="score">27.5</span>
+                </div>
+                <div class="subject">
+                    <span>Biology</span>
+                    <span class="score">54</span>
+                </div>
+                <div class="subject">
+                    <span>English</span>
+                    <span class="score">42</span>
+                </div>
+                <div class="subject">
+                    <span>Scholastic Aptitude Test</span>
+                    <span class="score">25.42</span>
+                </div>
+                <div class="subject">
+                    <span>Physics</span>
+                    <span class="score">38.33</span>
+                </div>
+                <div class="subject">
+                    <span>Mathematics</span>
+                    <span class="score">48.33</span>
+                </div>
+
+                <div class="actions">
+                    <button class="btn-outline">⟲ Check Again</button>
+                    <button class="btn-dark">🖨 Print Certificate</button>
+                </div>
+            </div>
+
+            <style>
+                .result-card {
+                    background: #fff;
+                    border-radius: 12px;
+                    padding: 20px;
+                    max-width: 460px;
+                    margin: 20px auto;
+                    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+                }
+
+                .result-card h2 {
+                    font-size: 18px;
+                    font-weight: 600;
+                    margin-bottom: 16px;
+                    color: #222;
+                }
+
+                .subject {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    background: #f9fafc;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 8px;
+                    padding: 12px 16px;
+                    margin-bottom: 12px;
+                    font-size: 15px;
+                    font-weight: 500;
+                    color: #333;
+                }
+
+                .subject .score {
+                    background: #edf2f7;
+                    padding: 6px 12px;
+                    border-radius: 6px;
+                    font-weight: 600;
+                    color: #1a202c;
+                }
+
+                .actions {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                    margin-top: 20px;
+                }
+
+                .btn-outline {
+                    background: #fff;
+                    border: 1px solid #d1d5db;
+                    padding: 12px;
+                    border-radius: 8px;
+                    font-size: 15px;
+                    font-weight: 500;
+                    cursor: pointer;
+                }
+
+                .btn-dark {
+                    background: #1f2937;
+                    color: #fff;
+                    border: none;
+                    padding: 12px;
+                    border-radius: 8px;
+                    font-size: 15px;
+                    font-weight: 500;
+                    cursor: pointer;
+                }
+            </style>
+           
+    </div>
+    </div>
+
+    <script>
+        // Toggle mobile menu
+        document.querySelector('.menu-toggle').addEventListener('click', function () {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function (event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuToggle = document.querySelector('.menu-toggle');
+
+            if (!mobileMenu.contains(event.target) && event.target !== menuToggle) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Simple print functionality
+        document.querySelector('.btn-print').addEventListener('click', function () {
+            window.print();
+        });
+
+        // Check again button functionality
+        document.querySelector('.btn-check').addEventListener('click', function () {
+            alert('Redirecting to result check page...');
+        });
+    </script>
 </body>
 
 </html>
-
